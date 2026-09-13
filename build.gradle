@@ -3,7 +3,7 @@ plugins {
     id 'io.micronaut.application' version '5.0.1'
 }
 
-group = 'org.example'
+group = 'io.spacecat'
 version = '1.0-SNAPSHOT'
 
 
@@ -23,16 +23,38 @@ java {
 
 
 dependencies {
-    implementation("io.micronaut:micronaut-http-server-netty")
+    implementation 'io.micronaut:micronaut-http-server-netty'
+    implementation("io.micronaut:micronaut-http-client-jdk")
+    implementation 'io.micronaut:micronaut-management'
+    implementation("io.micronaut:micronaut-validation:3.10.10")
+    implementation 'io.micronaut:micronaut-jackson-databind'
+    implementation 'io.micronaut:micronaut-context'
 
-    implementation("io.micronaut:micronaut-management")
+    implementation 'io.micronaut.micrometer:micronaut-micrometer-core'
+    implementation 'io.micronaut.micrometer:micronaut-micrometer-registry-prometheus'
 
-    implementation("io.micronaut:micronaut-context")
-
-    testImplementation("io.micronaut:micronaut-test-junit5")
+    runtimeOnly("org.yaml:snakeyaml")
+    runtimeOnly("org.apache.logging.log4j:log4j-core")
+    runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl")
+    // Source: https://mvnrepository.com/artifact/io.micronaut.test/micronaut-test-junit5
+    testImplementation("io.micronaut.test:micronaut-test-junit5:5.1.0")
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+def previewFlag = '--enable-preview'
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += previewFlag
+}
+
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += previewFlag
+}
+tasks.withType(Test).configureEach {
+    jvmArgs += previewFlag
 }
 
 test {

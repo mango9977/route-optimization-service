@@ -1,0 +1,26 @@
+micronaut:
+  executors:
+      blocking:
+        virtual: true
+        number-of-threads: 100   # не ограничивает, но может использоваться как подсказка
+  server:
+     port: 8080
+     netty:
+       worker:
+         threads: 4
+       parent:
+         threads: 4
+
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: 1m
+  endpoints:
+    metrics:
+      enabled: true
+      sensitive: false
+    prometheus:
+      enabled: true
+      sensitive: false
