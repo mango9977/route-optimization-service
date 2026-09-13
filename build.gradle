@@ -34,9 +34,7 @@ dependencies {
     implementation 'io.micronaut.micrometer:micronaut-micrometer-registry-prometheus'
 
     runtimeOnly("org.yaml:snakeyaml")
-    runtimeOnly("org.apache.logging.log4j:log4j-core")
-    runtimeOnly("org.apache.logging.log4j:log4j-slf4j2-impl")
-    // Source: https://mvnrepository.com/artifact/io.micronaut.test/micronaut-test-junit5
+    runtimeOnly("ch.qos.logback:logback-classic:1.6.1")
     testImplementation("io.micronaut.test:micronaut-test-junit5:5.1.0")
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")

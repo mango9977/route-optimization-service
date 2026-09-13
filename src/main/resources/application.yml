@@ -10,6 +10,12 @@ micronaut:
          threads: 4
        parent:
          threads: 4
+logger:
+  levels:
+    io.micronaut: INFO
+    io.spacecat: DEBUG
+    io.micronaut.context: TRACE
+    io.micronaut.http.server: DEBUG
 
   metrics:
     enabled: true

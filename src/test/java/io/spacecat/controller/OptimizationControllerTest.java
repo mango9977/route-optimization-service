@@ -35,6 +35,6 @@ public class OptimizationControllerTest {
                 OptimizationResponse.class
         );
         assertNotNull(response.bestResult());
-        assertEquals(3, response.bestResult().points().size());
+        assertEquals(3, response.results().size());
     }
 }
