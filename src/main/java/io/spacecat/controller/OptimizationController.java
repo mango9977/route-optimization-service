@@ -108,10 +108,6 @@ public class OptimizationController {
         }
     }
 
-    /**
-     * Запускает один алгоритм, замеряет время и пишет метрику в Micrometer.
-     * Ошибки не пробрасываются наружу — они превращаются в AlgorithmResult со статусом FAILED.
-     */
     private AlgorithmResult runAlgorithm(RouteOptimizer optimizer, List<Point> points) {
         long start = System.nanoTime();
         try {
