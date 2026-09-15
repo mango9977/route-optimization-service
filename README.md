@@ -18,6 +18,28 @@
 ```bash
 ./gradlew run
 
+./gradlew build
+java --enable-preview -jar build/libs/route-optimization-service-1.0-SNAPSHOT-all.jar
+
+src/main/java/io/spacecat/
+├── RouteOptimizationServiceRunner.java   # точка входа
+├── controller/
+│   └── OptimizationController.java       # REST-контроллер
+├── model/
+│   ├── Point.java
+│   ├── Route.java
+│   ├── AlgorithmType.java
+│   └── dto/
+│       ├── OptimizationRequest.java
+│       └── OptimizationResponse.java
+└── service/
+    ├── RouteOptimizer.java               # интерфейс
+    ├── OptimizerFactory.java             # фабрика алгоритмов
+    └── algorithm/
+        ├── GeoUtils.java                 # общие утилиты
+        ├── GreedyOptimizer.java
+        ├── AntColonyOptimizer.java
+        └── ExactOptimizer.java
 
 curl --location 'http://localhost:8080/api/v1/optimize' \
 --header 'Content-Type: application/json' \
